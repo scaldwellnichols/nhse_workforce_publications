@@ -4,7 +4,10 @@ def extract_month_year(text : str) -> str:
     """
     Extracts month-year pattern from a given text.
 
-    For example, if the text is 'The report is for January-2021', the function will return 'January-2021'.
+    For example, 
+        'The report is for January-2021' ---> 'January-2021'
+        'asdfgh-july-2025-asdf' ---> 'july-2025'
+        'The report is for 2021' ---> 'No month-year found'
 
     Parameters
     ----------

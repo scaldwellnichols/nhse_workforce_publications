@@ -28,9 +28,10 @@ def extract_zip(zip_file_path : str, remove_zip=False):
 
 def download_file(url, download_dir):
     url_as_path = Path.Path(url)
-    file_name = download_dir / url_as_path.name
+    file_name = download_dir / url_as_path.name.replace('-', '').replace('%20', '_').replace('%2C', '').replace('__', '_').lower()
     with requests.get(url, stream=True) as r:
             r.raise_for_status()
             with open(file_name, 'wb') as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
+    return file_name

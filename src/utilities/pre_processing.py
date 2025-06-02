@@ -68,10 +68,9 @@ class NHSDigitalPublicationSeries():
         os.makedirs(download_dir, exist_ok=True)
         # Download each file in the links list
         for file in files:
-            file_utils.download_file(file, download_dir)
-            file_as_path = Path.Path(file)
-            if file_as_path.suffix == '.zip':
-                file_utils.extract_zip(download_dir / file_as_path.name, remove_zip=True)
+            file_name = file_utils.download_file(file, download_dir)
+            if file_name.suffix == '.zip':
+                file_utils.extract_zip(file_name, remove_zip=True)
     
     def download_all_publication_series(self):
         """
